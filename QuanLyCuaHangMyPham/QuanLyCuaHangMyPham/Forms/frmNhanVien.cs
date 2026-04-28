@@ -159,9 +159,9 @@ namespace QuanLyCuaHangMyPham.Forms
 
                 switch (cv)
                 {
-                    case "Chủ cửa hàng":
+                    case "Admin":
                         cboLuongCoBan.Text = "0";
-                        cboLuongCoBan.Enabled = false; // Sếp không cần lương
+                        cboLuongCoBan.Enabled = false;
                         break;
                     case "Quản lý":
                         cboLuongCoBan.Text = "500000";

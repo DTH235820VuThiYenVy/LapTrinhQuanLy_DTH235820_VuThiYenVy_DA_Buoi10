@@ -75,7 +75,7 @@ namespace QuanLyCuaHangMyPham.Reports
             dtpDenNgay.Value = DateTime.Now;
 
             TaiDuLieuLenBaoCao();
-        }
+        }   
 
         private void btnLoc_Click(object sender, EventArgs e)
         {

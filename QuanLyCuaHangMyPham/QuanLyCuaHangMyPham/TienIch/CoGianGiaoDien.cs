@@ -8,25 +8,21 @@ namespace QuanLyCuaHangMyPham.TienIch
 {
     public class CoGianGiaoDien
     {
-        // 1. BIẾN TOÀN CỤC (Private fields: có dấu '_' và theo kiểu camelCase)
         private Form _formHienTai;
         private Rectangle _kichThuocFormGoc;
         private Dictionary<Control, Rectangle> _kichThuocControlGoc;
         private Dictionary<Control, float> _coChuGoc;
 
-        // 2. HÀM KHỞI TẠO (Constructor: Tên phải giống hệt tên Class)
-        public CoGianGiaoDien(Form formCanCoGian) // Tham số: camelCase
+        public CoGianGiaoDien(Form formCanCoGian) 
         {
             _formHienTai = formCanCoGian;
             _kichThuocControlGoc = new Dictionary<Control, Rectangle>();
             _coChuGoc = new Dictionary<Control, float>();
 
-            // Lắng nghe các sự kiện của Form
             _formHienTai.Load += FormHienTai_KhiTai;
             _formHienTai.Resize += FormHienTai_KhiThayDoiKichThuoc;
         }
 
-        // 3. CÁC HÀM XỬ LÝ (Methods: PascalCase)
         private void FormHienTai_KhiTai(object sender, EventArgs e)
         {
             // Lưu lại khung viền (kích thước, vị trí) của Form lúc vừa chạy

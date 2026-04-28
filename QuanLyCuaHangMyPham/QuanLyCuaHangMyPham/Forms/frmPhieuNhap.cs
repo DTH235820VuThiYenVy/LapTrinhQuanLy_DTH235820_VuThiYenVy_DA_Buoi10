@@ -86,7 +86,7 @@ namespace QuanLyCuaHangMyPham.Forms
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(_maPN))
+            /*if (string.IsNullOrEmpty(_maPN))
             {
                 MessageBox.Show("Vui lòng chọn phiếu nhập cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -120,6 +120,73 @@ namespace QuanLyCuaHangMyPham.Forms
                             _context.PhieuNhap.Remove(pn);
                             _context.SaveChanges();
                             db.Commit();
+                            NhatKyHeThong.GhiLog(_maTKDangNhap, $"Xóa phiếu nhập {_maPN} và trừ tồn kho các sản phẩm liên quan");
+
+                            MessageBox.Show("Xóa phiếu nhập và trừ tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _maPN = "";
+                            TaiDuLieuLenBang();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        db.Rollback();
+                        MessageBox.Show("Lỗi khi xóa: " + ex.Message, "Lỗi Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }*/
+            if (string.IsNullOrEmpty(_maPN))
+            {
+                MessageBox.Show("Vui lòng chọn phiếu nhập cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show($"Bạn có chắc chắn muốn xóa Phiếu Nhập {_maPN}?\nHành động này sẽ TRỪ ĐI số lượng sản phẩm trong kho.",
+                "Cảnh báo quan trọng", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (dr == DialogResult.Yes)
+            {
+                using (var db = _context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var pn = _context.PhieuNhap.Find(_maPN);
+                        if (pn != null)
+                        {
+                            var listChiTiet = _context.ChiTietPN.Where(ct => ct.MaPN == _maPN).ToList();
+
+                            foreach (var ct in listChiTiet)
+                            {
+                                var sp = _context.SanPham.Find(ct.MaSP);
+                                if (sp != null)
+                                {
+                                    // tồn hiện tại < số lượng nhập trog phiếu 
+                                    if (sp.SLTon < ct.SoLuong)
+                                    {
+                                        MessageBox.Show($"Không thể xóa!\nSản phẩm '{sp.TenSP}' còn {sp.SLTon} trong kho (do đã được bán đi).\nNếu xóa phiếu nhập này (trừ {ct.SoLuong}), tồn kho sẽ bị âm!",
+                                            "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                                        db.Rollback(); 
+                                        return; 
+                                    }
+                                }
+                            }
+
+                            foreach (var ct in listChiTiet)
+                            {
+                                var sp = _context.SanPham.Find(ct.MaSP);
+                                if (sp != null)
+                                {
+                                    sp.SLTon -= ct.SoLuong; 
+                                }
+                            }
+
+
+                            _context.ChiTietPN.RemoveRange(listChiTiet);
+                            _context.PhieuNhap.Remove(pn);
+
+                            _context.SaveChanges();
+                            db.Commit();
+
                             NhatKyHeThong.GhiLog(_maTKDangNhap, $"Xóa phiếu nhập {_maPN} và trừ tồn kho các sản phẩm liên quan");
 
                             MessageBox.Show("Xóa phiếu nhập và trừ tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

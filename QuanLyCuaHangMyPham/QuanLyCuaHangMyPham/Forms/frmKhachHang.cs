@@ -43,7 +43,7 @@ namespace QuanLyCuaHangMyPham.Forms
             dtpNgaySinh.Enabled = giaTri;
             txtDiemTichLuy.Enabled = giaTri;
 
-            txtMaKH.Enabled = false; // Mã tự sinh luôn khóa
+            txtMaKH.Enabled = false; 
 
             btnLuu.Enabled = giaTri;
             btnHuy.Enabled = giaTri;
@@ -52,7 +52,6 @@ namespace QuanLyCuaHangMyPham.Forms
             btnXoa.Enabled = !giaTri;
         }
 
-        // --- HÀM TẢI DỮ LIỆU VÀ BINDING ---
         private void TaiDuLieuLenBang()
         {
             List<KhachHang> kh = _context.KhachHang.ToList();

@@ -95,8 +95,8 @@ namespace QuanLyCuaHangMyPham.Forms
             cboTenNCC.ValueMember = "MaNCC";
             cboTenNCC.DisplayMember = "TenNCC";
 
-            // 3. Nạp sản phẩm (Kèm tính năng tìm kiếm gợi ý như ní muốn)
-            var dsSP = _context.SanPham.Select(s => new
+            //nạp sp
+           /* var dsSP = _context.SanPham.Select(s => new
             {
                 s.MaSP,
                 HienThi = s.TenSP + " (" + s.MaSP + ")"
@@ -104,7 +104,22 @@ namespace QuanLyCuaHangMyPham.Forms
             cboTenSP.DataSource = dsSP;
             cboTenSP.ValueMember = "MaSP";
             cboTenSP.DisplayMember = "HienThi";
+            cboTenSP.SelectedIndex = -1;*/
+
+            //tồn < 50
+            var dsSP = _context.SanPham
+                .Where(s => s.SLTon < 50) 
+                .Select(s => new
+                {
+                    s.MaSP,
+                    HienThi = s.TenSP + " (" + s.MaSP + ")"
+                }).ToList();
+
+            cboTenSP.DataSource = dsSP;
+            cboTenSP.ValueMember = "MaSP";
+            cboTenSP.DisplayMember = "HienThi";
             cboTenSP.SelectedIndex = -1;
+
 
             // 4. Nạp phương thức thanh toán
             cboPT_ThanhToan.DataSource = _context.PT_ThanhToan.ToList();
@@ -141,7 +156,10 @@ namespace QuanLyCuaHangMyPham.Forms
 
         private void frmPhieuNhap_ChiTiet_Load(object sender, EventArgs e)
         {
+           
             cboTenSP.DropDownStyle = ComboBoxStyle.DropDown;
+            
+                
 
             // Gán chữ mờ hiển thị
             SendMessage(cboTenSP.Handle, CB_SETCUEBANNER, (IntPtr)0, "Nhập từ khóa để tìm kiếm...");
@@ -338,18 +356,24 @@ namespace QuanLyCuaHangMyPham.Forms
         DataTable dtSanPham;
         private void cboTenSP_TextUpdate(object sender, EventArgs e)
         {
-            // 1. Lưu lại từ khóa đang gõ (chuyển về chữ thường để dễ tìm)
             string tuKhoa = cboTenSP.Text.ToLower();
 
-            // 2. Dùng Entity Framework (LINQ) để lọc ra các sản phẩm CHỨA từ khóa
-            // Lọc theo cả Tên Sản Phẩm HOẶC Mã Sản Phẩm cho tiện
-            var dsLoc = _context.SanPham
+            /*var dsLoc = _context.SanPham
                 .Where(s => s.TenSP.ToLower().Contains(tuKhoa) || s.MaSP.ToLower().Contains(tuKhoa))
                 .Select(s => new
                 {
                     s.MaSP,
                     HienThi = s.TenSP + " (" + s.MaSP + ")"
+                }).ToList();*/
+
+            var dsLoc = _context.SanPham
+                .Where(s => s.SLTon < 50 && (s.TenSP.ToLower().Contains(tuKhoa) || s.MaSP.ToLower().Contains(tuKhoa))) 
+                .Select(s => new
+                {
+                    s.MaSP,
+                    HienThi = s.TenSP + " (" + s.MaSP + ")"
                 }).ToList();
+
 
             // 3. Gán lại danh sách đã lọc vào ComboBox
             cboTenSP.DataSource = dsLoc;
@@ -381,6 +405,11 @@ namespace QuanLyCuaHangMyPham.Forms
                 frmIn.ShowDialog();
                 NhatKyHeThong.GhiLog(_maTKDangNhap, "In phiếu nhập hàng: " + _maPN);
             }
+        }
+
+        private void cboTenSP_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

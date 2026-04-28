@@ -412,6 +412,7 @@
             cboTenSP.Name = "cboTenSP";
             cboTenSP.Size = new Size(248, 31);
             cboTenSP.TabIndex = 31;
+            cboTenSP.SelectedIndexChanged += cboTenSP_SelectedIndexChanged;
             cboTenSP.SelectionChangeCommitted += cboTenSP_SelectionChangeCommitted;
             cboTenSP.TextUpdate += cboTenSP_TextUpdate;
             // 
