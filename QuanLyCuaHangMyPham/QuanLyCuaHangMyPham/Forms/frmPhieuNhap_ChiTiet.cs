@@ -96,7 +96,7 @@ namespace QuanLyCuaHangMyPham.Forms
             cboTenNCC.DisplayMember = "TenNCC";
 
             //nạp sp
-           /* var dsSP = _context.SanPham.Select(s => new
+            var dsSP = _context.SanPham.Select(s => new
             {
                 s.MaSP,
                 HienThi = s.TenSP + " (" + s.MaSP + ")"
@@ -104,16 +104,16 @@ namespace QuanLyCuaHangMyPham.Forms
             cboTenSP.DataSource = dsSP;
             cboTenSP.ValueMember = "MaSP";
             cboTenSP.DisplayMember = "HienThi";
-            cboTenSP.SelectedIndex = -1;*/
+            cboTenSP.SelectedIndex = -1;
 
             //tồn < 50
-            var dsSP = _context.SanPham
+            /*var dsSP = _context.SanPham
                 .Where(s => s.SLTon < 50) 
                 .Select(s => new
                 {
                     s.MaSP,
                     HienThi = s.TenSP + " (" + s.MaSP + ")"
-                }).ToList();
+                }).ToList();*/
 
             cboTenSP.DataSource = dsSP;
             cboTenSP.ValueMember = "MaSP";
@@ -358,21 +358,21 @@ namespace QuanLyCuaHangMyPham.Forms
         {
             string tuKhoa = cboTenSP.Text.ToLower();
 
-            /*var dsLoc = _context.SanPham
+            var dsLoc = _context.SanPham
                 .Where(s => s.TenSP.ToLower().Contains(tuKhoa) || s.MaSP.ToLower().Contains(tuKhoa))
                 .Select(s => new
                 {
                     s.MaSP,
                     HienThi = s.TenSP + " (" + s.MaSP + ")"
-                }).ToList();*/
+                }).ToList();
 
-            var dsLoc = _context.SanPham
+            /*var dsLoc = _context.SanPham
                 .Where(s => s.SLTon < 50 && (s.TenSP.ToLower().Contains(tuKhoa) || s.MaSP.ToLower().Contains(tuKhoa))) 
                 .Select(s => new
                 {
                     s.MaSP,
                     HienThi = s.TenSP + " (" + s.MaSP + ")"
-                }).ToList();
+                }).ToList();*/
 
 
             // 3. Gán lại danh sách đã lọc vào ComboBox
