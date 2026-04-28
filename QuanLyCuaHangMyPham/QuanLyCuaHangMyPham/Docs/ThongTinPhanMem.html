@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Phần Mềm</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            border-top: 5px solid navy;
+        }
+
+        h1 {
+            color: navy;
+            margin-bottom: 5px;
+        }
+
+        .version {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+        }
+
+        .info-group {
+            text-align: left;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+            .info-group strong {
+                color: #2c3e50;
+            }
+
+        /* Cụm CSS mới dùng để làm đẹp danh sách công nghệ */
+        .tech-title {
+            text-align: left;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .tech-tags {
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background-color: #e8f4f8;
+            color: #1e3799;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85em;
+            font-weight: bold;
+            border: 1px solid #d1e8f0;
+        }
+
+        .footer {
+            margin-top: 35px;
+            font-size: 0.8em;
+            color: #95a5a6;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>PHẦN MỀM QUẢN LÝ CỬA HÀNG MỸ PHẨM</h1>
+        <div class="version">Phiên bản 1.0.0</div>
+
+        <div class="info-group">
+            <p><strong>Sinh viên thực hiện:</strong> Vũ Thị Yến Vy</p>
+            <p><strong>Mã số sinh viên:</strong> DTH235820</p>
+            <p><strong>Lớp:</strong> DH24TH3</p>
+            <p><strong>Giảng viên hướng dẫn:</strong> Huỳnh Lý Thanh Nhàn</p>
+        </div>
+
+        <div class="tech-title"><strong>Công nghệ ứng dụng:</strong></div>
+        <div class="tech-tags">
+            <span class="tag">C# WinForms</span>
+            <span class="tag">Entity Framework Core</span>
+            <span class="tag">SQL Server</span>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Elvie Cosmetics. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Sử Dụng - Phần Mềm Quản Lý Cửa Hàng Mỹ Phẩm Elvie Cosmetics</title>
+    <style>
+        :root {
+            --primary-color: #000080; /* Navy */
+            --secondary-color: #3498db;
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 { margin: 0; font-size: 28px; }
+        .header p { margin: 10px 0 0 0; font-size: 16px; opacity: 0.9; }
+        
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        /* TOC - Mục lục bên trái */
+        .toc {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            align-self: flex-start;
+            position: sticky;
+            top: 20px;
+        }
+        .toc h3 { color: var(--primary-color); margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px;}
+        .toc ul { list-style: none; padding: 0; margin: 0; }
+        .toc li { margin-bottom: 10px; }
+        .toc a { 
+            text-decoration: none; 
+            color: #555; 
+            font-weight: 500;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        .toc a:hover { background-color: #f0f4f8; color: var(--secondary-color); padding-left: 10px; }
+
+        /* Nội dung chính bên phải */
+        .content {
+            flex: 3;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .section { margin-bottom: 40px; }
+        .section h2 { 
+            color: var(--primary-color); 
+            border-bottom: 2px solid var(--secondary-color); 
+            padding-bottom: 10px; 
+            margin-top: 0;
+        }
+        .section h4 { color: #2c3e50; margin-bottom: 5px; }
+        .feature-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .highlight { color: #e74c3c; font-weight: bold; }
+        
+        /* Chỉnh cho màn hình nhỏ (Điện thoại/Tablet) */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .toc { position: relative; top: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>SỔ TAY HƯỚNG DẪN SỬ DỤNG</h1>
+        <p>Phần Mềm Quản lý Cửa hàng Mỹ Phẩm Elvie Cosmetics</p>
+    </div>
+
+    <div class="container">
+        <div class="toc">
+            <h3>Mục Lục</h3>
+            <ul>
+                <li><a href="#tong-quan">1. Tổng quan & Đăng nhập</a></li>
+                <li><a href="#ban-hang">2. Nghiệp vụ Bán hàng</a></li>
+                <li><a href="#kho-hang">3. Quản lý Kho & Sản phẩm</a></li>
+                <li><a href="#nhan-su">4. Quản lý Nhân sự & Phân quyền</a></li>
+                <li><a href="#bao-cao">5. Báo cáo & Thống kê</a></li>
+                <li><a href="#tuy-chinh">6. Tiện ích & Giao diện</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            
+            <div id="tong-quan" class="section">
+                <h2>1. Tổng quan & Đăng nhập</h2>
+                <p>Hệ thống được thiết kế với giao diện hiện đại, dễ thao tác và có tính bảo mật cao thông qua cơ chế phân quyền tài khoản chặt chẽ.</p>
+                <div class="feature-box">
+                    <h4>Khởi động & Đăng nhập:</h4>
+                    <ul>
+                        <li>Mở phần mềm, nhập <b>Tên đăng nhập</b> và <b>Mật khẩu</b>.</li>
+                        <li>Hệ thống sẽ tự động nhận diện chức vụ (Admin, Quản lý, Nhân viên bán hàng, Nhân viên kho) để <span class="highlight">ẩn/hiện các chức năng</span> tương ứng trên thanh Menu Sidebar.</li>
+                        <li><b>Quên mật khẩu:</b> Vui lòng liên hệ Admin hoặc Quản lý để được cấp lại mật khẩu mặc định (123).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="ban-hang" class="section">
+                <h2>2. Nghiệp vụ Bán hàng</h2>
+                <p>Module dành cho Thu ngân và Nhân viên phục vụ, giúp xử lý đơn hàng nhanh chóng.</p>
+                <ul>
+                    <li><b>Tạo Hóa Đơn:</b> Chọn khách hàng (có thể thêm mới), chọn sản phẩm vào giỏ hàng. Phần mềm tự động tính tổng tiền.</li>
+                    <li><b>Thanh Toán:</b> Nhập số tiền khách đưa, hệ thống tự động tính tiền thừa. Sau khi lưu, có thể xuất và <b>In hóa đơn</b> đưa cho khách.</li>
+                    <li><b>Quản lý Khách Hàng:</b> Lưu trữ thông tin khách hàng thân thiết để dễ dàng chăm sóc và tra cứu.</li>
+                </ul>
+            </div>
+
+            <div id="kho-hang" class="section">
+                <h2>3. Quản lý Kho & Sản phẩm</h2>
+                <p>Quản lý chặt chẽ luồng hàng hóa ra/vào và thông tin chi tiết của từng sản phẩm.</p>
+                <div class="feature-box">
+                    <h4>Quản lý Sản phẩm:</h4>
+                    <ul>
+                        <li>Hỗ trợ <b>đính kèm nhiều hình ảnh</b> cho mỗi sản phẩm. Ảnh được quản lý tự động, không lo mất file.</li>
+                        <li>Tự động phát sinh mã sản phẩm thông minh.</li>
+                        <li>Hỗ trợ <b>Nhập/Xuất file Excel</b> để thêm nhanh hàng trăm sản phẩm vào phần mềm.</li>
+                    </ul>
+                    <h4>Nhập Hàng & Công Nợ:</h4>
+                    <ul>
+                        <li><b>Phiếu Nhập:</b> Lập phiếu nhập hàng từ Nhà Cung Cấp, số lượng sản phẩm sẽ tự động <span class="highlight">cộng vào tồn kho</span>.</li>
+                        <li><b>Phiếu Chi:</b> Dùng để thanh toán tiền nợ cho Nhà Cung Cấp hoặc chi trả các chi phí nội bộ (điện, nước).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="nhan-su" class="section">
+                <h2>4. Quản lý Nhân sự & Phân quyền</h2>
+                <p>Nơi quản lý thông tin nhân viên, tài khoản đăng nhập và các lịch trình làm việc.</p>
+                <ul>
+                    <li><b>Hồ sơ Nhân viên:</b> Thêm, sửa, xóa thông tin cá nhân. Nhập/Xuất danh sách nhân viên ra file Excel.</li>
+                    <li><b>Tài khoản:</b> Cấp quyền truy cập cho nhân viên. Admin có thể <b>Khóa/Mở khóa</b> tài khoản hoặc <b>Reset mật khẩu</b> khi cần thiết.</li>
+                    <li><b>Lịch làm việc & Phân ca:</b> Sắp xếp ca làm việc cho nhân viên trong tuần/tháng.</li>
+                </ul>
+            </div>
+
+            <div id="bao-cao" class="section">
+                <h2>5. Báo cáo & Thống kê</h2>
+                <p>Công cụ đắc lực dành cho Quản lý / Chủ cửa hàng để nắm bắt tình hình kinh doanh.</p>
+                <ul>
+                    <li><b>Thống kê Doanh thu:</b> Xem doanh thu theo ngày, tháng, năm. Đi kèm biểu đồ trực quan.</li>
+                    <li><b>Thống kê Tồn kho:</b> Kiểm soát mặt hàng nào sắp hết để kịp thời nhập thêm.</li>
+                    <li><b>Sản phẩm bán chạy:</b> Báo cáo top các sản phẩm mang lại doanh thu cao nhất.</li>
+                    <li>Tất cả báo cáo đều có thể <b>Xuất ra file Excel</b> để lưu trữ hoặc gửi cho cấp trên.</li>
+                </ul>
+            </div>
+
+            <div id="tuy-chinh" class="section">
+                <h2>6. Tiện ích & Tùy chỉnh Giao diện</h2>
+                <p>Hệ thống cho phép cá nhân hóa trải nghiệm làm việc của từng nhân viên.</p>
+                <div class="feature-box">
+                    <h4>Thay đổi Theme (Giao diện):</h4>
+                    <p>Truy cập mục <b>Tùy chỉnh giao diện</b> trên màn hình chính, bạn có thể thay đổi màu sắc phần mềm tùy theo sở thích hoặc môi trường làm việc:</p>
+                    <ul>
+                        <li><b>Sáng:</b> Chế độ mặc định cơ bản của Windows.</li>
+                        <li><b>Mặc định:</b> Tông màu xanh Navy sang trọng, chuyên nghiệp.</li>
+                        <li><b>Chế độ tối (Dark Mode):</b> Bảo vệ mắt khi làm việc vào ban đêm.</li>
+                        <li><b>Mùa xuân (Hồng):</b> Giao diện trẻ trung, tươi mới.</li>
+                        <li><b>Tùy chỉnh:</b> Tự do chọn màu Nền và màu Chữ theo ý thích.</li>
+                    </ul>
+                    <p><i>Lưu ý: Giao diện sẽ tự động lưu lại theo từng tài khoản đăng nhập.</i></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
